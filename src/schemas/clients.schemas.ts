@@ -15,3 +15,12 @@ export const createClientSchema = yup.object().shape({
     .required("phone_number is a required Field")
     .max(15, "number must not have more than 15 characters"),
 });
+
+export const updateClientSchema = yup.object().shape({
+  email: yup.string().email("Invalid Email"),
+  password: yup.string().min(8, "Password must have minimum of 8 characters"),
+  name: yup.string(),
+  phone_number: yup
+    .string()
+    .max(15, "number must not have more than 15 characters"),
+});

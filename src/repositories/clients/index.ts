@@ -41,7 +41,15 @@ class ClientRepository implements IClientRepository {
   }
 
   async listClients(): Promise<IClient[]> {
-    const clients = await prisma.clients.findMany();
+    const clients = await prisma.clients.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone_number: true,
+        created_at: true,
+      },
+    });
     return clients;
   }
 
