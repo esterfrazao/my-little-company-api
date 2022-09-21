@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createContactController,
+  deleteContactController,
   listClientContactsController,
   readOneContactController,
   updateContactController,
@@ -46,6 +47,13 @@ contactsRoutes.put(
   verifyContactIdMiddleware,
   schemaValidation(updatePutContactSchema),
   updateContactController
+);
+
+contactsRoutes.delete(
+  "/:contact_id",
+  verifyTokenMiddleware,
+  verifyContactIdMiddleware,
+  deleteContactController
 );
 
 export default contactsRoutes;
