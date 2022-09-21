@@ -19,7 +19,7 @@ const verifyTokenMiddleware = async (
     `${process.env.SECRET_KEY}`,
     async (error: any, decoded: any) => {
       if (error) {
-        throw new AppError(400, "Invalid Token");
+        return res.status(400).json({ message: "Invalid Token" });
       }
 
       const clientRepository = new ClientRepository();
