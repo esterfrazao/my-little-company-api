@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { createContactController } from "../controllers/contact.controllers";
+import {
+  createContactController,
+  listClientContactsController,
+} from "../controllers/contact.controllers";
 import schemaValidation from "../middlewares/schemaValidation.mdw";
 import verifyTokenMiddleware from "../middlewares/verifyToken.mdw";
 import { createContactSchema } from "../schemas/contacts.schemas";
@@ -12,5 +15,7 @@ contactsRoutes.post(
   schemaValidation(createContactSchema),
   createContactController
 );
+
+contactsRoutes.get("/", verifyTokenMiddleware, listClientContactsController);
 
 export default contactsRoutes;
