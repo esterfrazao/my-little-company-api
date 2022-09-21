@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createClientController,
+  deleteClientController,
   listClientsController,
   readProfileController,
   updateClientController,
@@ -39,6 +40,13 @@ clientRoutes.put(
   verifyTokenMiddleware,
   schemaValidation(createClientSchema),
   updateClientController
+);
+
+clientRoutes.delete(
+  "/:client_id",
+  verifyClientIdMiddleware,
+  verifyTokenMiddleware,
+  deleteClientController
 );
 
 export default clientRoutes;

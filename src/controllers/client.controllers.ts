@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import createClientService from "../services/clients/createClient.svc";
+import deleteClientService from "../services/clients/deleteClient.svc";
 import listClientsService from "../services/clients/listClients.svc";
 import updateClientService from "../services/clients/updateClient.svc";
 
@@ -24,4 +25,11 @@ export const updateClientController = async (req: Request, res: Response) => {
   const message = await updateClientService(client_id, req.body, req.user);
 
   return res.status(200).json({ message });
+};
+
+export const deleteClientController = async (req: Request, res: Response) => {
+  const { client_id } = req.params;
+  await deleteClientService(client_id, req.user);
+
+  return res.status(204).send();
 };
