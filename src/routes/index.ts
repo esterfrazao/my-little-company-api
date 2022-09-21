@@ -7,6 +7,6 @@ const router = Router();
 
 router.use("/clients", clientRoutes);
 router.use(sessionRoutes);
-router.use(contactsRoutes);
+router.use("/contacts", contactsRoutes);
 
 export default router;

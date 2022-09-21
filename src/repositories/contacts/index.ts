@@ -25,6 +25,12 @@ class ContactRepository implements IContactRepository {
         phone_number,
         id_client,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone_number: true,
+      },
     });
 
     return contact;
@@ -35,6 +41,12 @@ class ContactRepository implements IContactRepository {
       where: {
         id_client,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone_number: true,
+      },
     });
 
     return contactList;
@@ -44,6 +56,12 @@ class ContactRepository implements IContactRepository {
     const contact = await prisma.contacts.findUnique({
       where: {
         id,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone_number: true,
       },
     });
 
@@ -68,3 +86,5 @@ class ContactRepository implements IContactRepository {
     });
   }
 }
+
+export default ContactRepository;
