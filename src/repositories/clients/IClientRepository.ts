@@ -14,9 +14,9 @@ export interface IClientRepository {
 
   listClients(): Promise<IClient[]>;
 
-  readProfilebyId(id: string): Promise<IClient>;
+  getClientById(id: string): Promise<IClient | null>;
 
-  getClientbyEmail(email: string): Promise<IClient>;
+  getClientbyEmail(email: string): Promise<IClient | null>;
 
   updateClient(id: string, data: IClientUpdate): Promise<void>;
 

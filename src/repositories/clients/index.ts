@@ -6,7 +6,6 @@ import {
   IClientUpdate,
 } from "../../interfaces/clients.interfaces";
 import { IClientRepository } from "./IClientRepository";
-import { hash } from "bcrypt";
 
 class ClientRepository implements IClientRepository {
   prisma: PrismaClient;
@@ -21,12 +20,11 @@ class ClientRepository implements IClientRepository {
     password,
     phone_number,
   }: IClientRequest): Promise<IClient> {
-    const hashedPassword = await hash(password, 10);
     const client = await prisma.clients.create({
       data: {
         name,
         email,
-        password: hashedPassword,
+        password,
         phone_number,
         created_at: new Date(),
       },
@@ -46,8 +44,8 @@ class ClientRepository implements IClientRepository {
     return clients;
   }
 
-  async readProfilebyId(id: string): Promise<IClient> {
-    const client = await prisma.clients.findUniqueOrThrow({
+  async getClientById(id: string): Promise<IClient | null> {
+    const client = await prisma.clients.findUnique({
       where: {
         id,
       },
@@ -55,8 +53,8 @@ class ClientRepository implements IClientRepository {
     return client;
   }
 
-  async getClientbyEmail(email: string): Promise<IClient> {
-    const client = await prisma.clients.findUniqueOrThrow({
+  async getClientbyEmail(email: string): Promise<IClient | null> {
+    const client = await prisma.clients.findUnique({
       where: {
         email,
       },
@@ -65,9 +63,6 @@ class ClientRepository implements IClientRepository {
   }
 
   async updateClient(id: string, data: IClientUpdate): Promise<void> {
-    if (data.password) {
-      data.password = await hash(data.password, 10);
-    }
     await prisma.clients.update({
       data,
       where: {
