@@ -6,9 +6,8 @@ const schemaValidation =
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const validatedUser = await schema.validate(req.body, {
-        strict: true,
-        abortEarly: false,
         stripUnknown: true,
+        abortEarly: false,
       });
 
       req.body = validatedUser;
