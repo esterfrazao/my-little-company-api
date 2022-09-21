@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import createContactService from "../services/contacts/createContact.svc";
 import listClientContactsService from "../services/contacts/listClientContacts";
+import readOneContactService from "../services/contacts/readOneContact.svc";
 
 export const createContactController = async (req: Request, res: Response) => {
   const { id } = req.user;
@@ -19,4 +20,10 @@ export const listClientContactsController = async (
   const contactsList = await listClientContactsService(id);
 
   return res.status(200).json(contactsList);
+};
+
+export const readOneContactController = async (req: Request, res: Response) => {
+  const { contact_id } = req.params;
+  const contact = await readOneContactService(contact_id);
+  return res.status(200).json(contact);
 };
