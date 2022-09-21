@@ -18,3 +18,7 @@ export interface IClient extends Omit<IClientRequest, "password"> {
   id: string;
   created_at: Date;
 }
+
+export interface ICLientWithPassword extends IClient {
+  password: string;
+}

@@ -4,6 +4,7 @@ import {
   IClientRequest,
   IClient,
   IClientUpdate,
+  ICLientWithPassword,
 } from "../../interfaces/clients.interfaces";
 import { IClientRepository } from "./IClientRepository";
 
@@ -49,11 +50,18 @@ class ClientRepository implements IClientRepository {
       where: {
         id,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone_number: true,
+        created_at: true,
+      },
     });
     return client;
   }
 
-  async getClientbyEmail(email: string): Promise<IClient | null> {
+  async getClientbyEmail(email: string): Promise<ICLientWithPassword | null> {
     const client = await prisma.clients.findUnique({
       where: {
         email,
