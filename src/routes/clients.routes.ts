@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { createClientController } from "../controllers/client.controllers";
+import {
+  createClientController,
+  listClientsController,
+} from "../controllers/client.controllers";
 import schemaValidation from "../middlewares/schemaValidation.mdw";
 import { createClientSchema } from "../schemas/clients.schemas";
 
@@ -10,5 +13,7 @@ clientRoutes.post(
   schemaValidation(createClientSchema),
   createClientController
 );
+
+clientRoutes.get("/clients", listClientsController);
 
 export default clientRoutes;
