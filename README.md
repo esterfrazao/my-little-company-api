@@ -1,6 +1,6 @@
 # my-little-company-api
 
-## Base Url : `https://onco-manager.herokuapp.com`
+## Base Url : `https://my-little-company-api.herokuapp.com/`
 
 ## Rotas Sem Autorização:
 
