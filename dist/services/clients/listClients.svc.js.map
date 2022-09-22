@@ -1,0 +1,1 @@
+{"version":3,"file":"listClients.svc.js","sourceRoot":"","sources":["../../../src/services/clients/listClients.svc.ts"],"names":[],"mappings":";;;;;;;;;;;;;;AACA,yEAA0D;AAE1D,MAAM,kBAAkB,GAAG,GAA6B,EAAE;IACxD,MAAM,gBAAgB,GAAG,IAAI,iBAAgB,EAAE,CAAC;IAChD,MAAM,WAAW,GAAG,MAAM,gBAAgB,CAAC,WAAW,EAAE,CAAC;IACzD,OAAO,WAAW,CAAC;AACrB,CAAC,CAAA,CAAC;AAEF,kBAAe,kBAAkB,CAAC"}
