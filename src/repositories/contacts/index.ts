@@ -30,6 +30,7 @@ class ContactRepository implements IContactRepository {
         name: true,
         email: true,
         phone_number: true,
+        id_client: true,
       },
     });
 
@@ -46,6 +47,7 @@ class ContactRepository implements IContactRepository {
         name: true,
         email: true,
         phone_number: true,
+        id_client: true,
       },
     });
 
@@ -62,6 +64,7 @@ class ContactRepository implements IContactRepository {
         name: true,
         email: true,
         phone_number: true,
+        id_client: true,
       },
     });
 

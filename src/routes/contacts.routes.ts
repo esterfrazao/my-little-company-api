@@ -8,6 +8,7 @@ import {
 } from "../controllers/contact.controllers";
 import schemaValidation from "../middlewares/schemaValidation.mdw";
 import verifyContactIdMiddleware from "../middlewares/verifyContactId.mdw";
+import verifyOwnerMiddleware from "../middlewares/verifyOwner.mdw";
 import verifyTokenMiddleware from "../middlewares/verifyToken.mdw";
 import {
   createContactSchema,
@@ -30,6 +31,7 @@ contactsRoutes.get(
   "/:contact_id",
   verifyTokenMiddleware,
   verifyContactIdMiddleware,
+  verifyOwnerMiddleware,
   readOneContactController
 );
 
@@ -37,6 +39,7 @@ contactsRoutes.patch(
   "/:contact_id",
   verifyTokenMiddleware,
   verifyContactIdMiddleware,
+  verifyOwnerMiddleware,
   schemaValidation(updatePatchContactSchema),
   updateContactController
 );
@@ -45,6 +48,7 @@ contactsRoutes.put(
   "/:contact_id",
   verifyTokenMiddleware,
   verifyContactIdMiddleware,
+  verifyOwnerMiddleware,
   schemaValidation(updatePutContactSchema),
   updateContactController
 );
@@ -53,6 +57,7 @@ contactsRoutes.delete(
   "/:contact_id",
   verifyTokenMiddleware,
   verifyContactIdMiddleware,
+  verifyOwnerMiddleware,
   deleteContactController
 );
 

@@ -6,6 +6,7 @@ export interface IContactRequest {
 
 export interface IContact extends IContactRequest {
   id: string;
+  id_client: string;
 }
 
 export interface IContactUpdate {
